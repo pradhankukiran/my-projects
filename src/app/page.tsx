@@ -1,10 +1,24 @@
-import { getProjects } from "@/lib/vercel";
+import { getProjects, getProjectDomains } from "@/lib/vercel";
 import ProjectSearch from "@/components/project-search";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const projects = await getProjects();
+
+  const projectsWithDomains = await Promise.all(
+    projects.map(async (project) => {
+      const domains = await getProjectDomains(project.id);
+      const customDomain = domains.find(
+        (d) => !d.name.endsWith(".vercel.app")
+      );
+      const resolvedUrl =
+        customDomain?.name ??
+        domains[0]?.name ??
+        `${project.name}.vercel.app`;
+      return { ...project, resolvedUrl };
+    })
+  );
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
@@ -15,7 +29,7 @@ export default async function Home() {
           on Vercel
         </p>
       </div>
-      <ProjectSearch projects={projects} />
+      <ProjectSearch projects={projectsWithDomains} />
     </div>
   );
 }

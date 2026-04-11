@@ -3,6 +3,8 @@ import type {
   VercelDeployment,
   VercelProjectsResponse,
   VercelDeploymentsResponse,
+  VercelDomain,
+  VercelDomainsResponse,
 } from "./types";
 
 const VERCEL_API = "https://api.vercel.com";
@@ -40,6 +42,15 @@ export async function getProjects(): Promise<VercelProject[]> {
 
 export async function getProject(idOrName: string): Promise<VercelProject> {
   return vercelFetch<VercelProject>(`/v9/projects/${idOrName}`);
+}
+
+export async function getProjectDomains(
+  projectId: string
+): Promise<VercelDomain[]> {
+  const data = await vercelFetch<VercelDomainsResponse>(
+    `/v9/projects/${projectId}/domains?limit=50`
+  );
+  return data.domains.filter((d) => !d.redirect);
 }
 
 export async function getDeployments(

@@ -48,6 +48,16 @@ export interface VercelDeployment {
   };
 }
 
+export interface VercelDomain {
+  name: string;
+  redirect: string | null;
+  redirectStatusCode: number | null;
+}
+
+export interface VercelDomainsResponse {
+  domains: VercelDomain[];
+}
+
 export interface VercelProjectsResponse {
   projects: VercelProject[];
   pagination: {

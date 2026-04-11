@@ -3,6 +3,8 @@
 import { useState } from "react";
 import type { VercelProject } from "@/lib/types";
 
+type ProjectWithUrl = VercelProject & { resolvedUrl: string };
+
 const FRAMEWORK_LABELS: Record<string, string> = {
   nextjs: "Next.js",
   gatsby: "Gatsby",
@@ -74,7 +76,7 @@ function timeAgo(timestamp: number): string {
 export default function ProjectSearch({
   projects,
 }: {
-  projects: VercelProject[];
+  projects: ProjectWithUrl[];
 }) {
   const [query, setQuery] = useState("");
 
@@ -99,14 +101,12 @@ export default function ProjectSearch({
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((project) => {
-            const prod = project.targets?.production;
-            const prodUrl = prod?.alias?.[0] ?? prod?.url;
-            const state = prod?.readyState;
+            const state = project.targets?.production?.readyState;
 
             return (
               <a
                 key={project.id}
-                href={prodUrl ? `https://${prodUrl}` : "#"}
+                href={`https://${project.resolvedUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block border border-gray-200 p-5 transition-colors hover:border-gray-400"
@@ -124,11 +124,9 @@ export default function ProjectSearch({
                   )}
                 </div>
 
-                {prodUrl && (
-                  <p className="mt-1 text-xs text-gray-500 truncate font-mono">
-                    {prodUrl}
-                  </p>
-                )}
+                <p className="mt-1 text-xs text-gray-500 truncate font-mono">
+                  {project.resolvedUrl}
+                </p>
 
                 <div className="mt-4 flex items-center gap-3 text-xs text-gray-500">
                   <span className="border border-gray-200 px-2 py-0.5">
