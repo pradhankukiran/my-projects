@@ -62,3 +62,13 @@ export async function getDeployments(
   );
   return data.deployments;
 }
+
+export async function getAllDeployments(
+  limit = 5
+): Promise<VercelDeployment[]> {
+  const data = await vercelFetch<VercelDeploymentsResponse>(
+    `/v6/deployments?limit=${limit}`
+  );
+  return data.deployments;
+}
+

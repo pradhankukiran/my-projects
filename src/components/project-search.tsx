@@ -59,12 +59,82 @@ function frameworkBadgeStyle(fw: string | null): string {
     case "vue":
     case "nuxtjs":
       return "bg-emerald-50 text-emerald-700 border-emerald-100";
+    case "react":
+      return "bg-cyan-50/50 text-cyan-700 border-cyan-100";
     case "angular":
       return "bg-rose-50 text-rose-700 border-rose-100";
     case "gatsby":
       return "bg-purple-50 text-purple-700 border-purple-100";
     default:
       return "bg-blue-50 text-blue-700 border-blue-100";
+  }
+}
+
+function FrameworkIcon({ fw }: { fw: string | null }) {
+  if (!fw) {
+    return (
+      <svg className="h-3.5 w-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+      </svg>
+    );
+  }
+
+  switch (fw) {
+    case "nextjs":
+      return (
+        <svg className="h-3.5 w-3.5 text-white shrink-0" viewBox="0 0 75 75" fill="currentColor">
+          <circle cx="37.5" cy="37.5" r="37.5" fill="black" />
+          <path d="M57.06 60.12L32.22 28.18v25.29h-4.32V21.68h4.32l20.48 26.5V21.68h4.36v38.44z" fill="white" />
+        </svg>
+      );
+    case "vite":
+      return (
+        <svg className="h-3.5 w-3.5 shrink-0" viewBox="0 0 256 256" fill="none">
+          <path d="M128 0L24 180h80L128 256l24-76h80L128 0z" fill="url(#vite-grad)" />
+          <defs>
+            <linearGradient id="vite-grad" x1="24" y1="0" x2="232" y2="256" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#41d1ff" />
+              <stop offset="100%" stopColor="#bd34fe" />
+            </linearGradient>
+          </defs>
+        </svg>
+      );
+    case "astro":
+      return (
+        <svg className="h-3.5 w-3.5 text-orange-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 22h4.5l2-4.5h7l2 4.5H22L12 2zm-2.25 12L12 9.5l2.25 4.5h-4.5z" />
+        </svg>
+      );
+    case "svelte":
+    case "sveltekit":
+      return (
+        <svg className="h-3.5 w-3.5 text-orange-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.66 14.66c-.4.4-.92.6-1.66.6-.74 0-1.26-.2-1.66-.6l-.8-.8-.8.8c-.4.4-.92.6-1.66.6-.74 0-1.26-.2-1.66-.6l-.66-.66.66-.66c.4-.4.92-.6 1.66-.6.74 0 1.26.2 1.66.6l.8.8.8-.8c.4-.4.92-.6 1.66-.6.74 0 1.26.2 1.66.6l.66.66-.66.66zm.8-3.32c-.4-.4-.92-.6-1.66-.6-.74 0-1.26.2-1.66.6l-.8.8-.8-.8c-.4-.4-.92-.6-1.66-.6-.74 0-1.26.2-1.66.6l-.66.66.66.66c.4.4.92.6 1.66.6.74 0 1.26-.2 1.66-.6l.8-.8.8.8c.4.4.92.6 1.66.6.74 0 1.26-.2 1.66-.6l.66-.66-.66-.66z" />
+        </svg>
+      );
+    case "vue":
+    case "nuxtjs":
+      return (
+        <svg className="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 1.5L12 22.2 0 1.5h5.3l6.7 11.6 6.7-11.6z" />
+          <path d="M18.7 1.5L12 13.1 5.3 1.5H0l12 20.7L24 1.5z" opacity=".5" />
+        </svg>
+      );
+    case "react":
+      return (
+        <svg className="h-3.5 w-3.5 text-cyan-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)" />
+          <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(90 12 12)" />
+          <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(150 12 12)" />
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+        </svg>
+      );
+    default:
+      return (
+        <svg className="h-3.5 w-3.5 text-blue-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      );
   }
 }
 
@@ -82,7 +152,7 @@ function statusColor(state: string | undefined): string {
       return "bg-slate-100 text-slate-500 border-slate-200";
     default:
       return "bg-slate-100 text-slate-500 border-slate-200";
-    }
+  }
 }
 
 function timeAgo(timestamp: number): string {
@@ -255,12 +325,13 @@ export default function ProjectSearch({
                 {/* Badges / Repo */}
                 <div className="mt-5 flex items-center justify-between gap-2 border-t border-outline/60 pt-4">
                   <div className="flex items-center gap-2 max-w-full truncate">
-                    {/* Framework Badge */}
+                    {/* Framework Badge with inline Icon */}
                     <span
-                      className={`border px-2.5 py-0.5 rounded-md text-2xs font-semibold ${frameworkBadgeStyle(
+                      className={`border px-2.5 py-1 rounded-lg text-2xs font-bold flex items-center gap-1.5 ${frameworkBadgeStyle(
                         project.framework
                       )}`}
                     >
+                      <FrameworkIcon fw={project.framework} />
                       {frameworkLabel(project.framework)}
                     </span>
 
