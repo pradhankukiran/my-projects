@@ -33,10 +33,22 @@ function timeAgo(timestamp: number): string {
 }
 
 export default async function Home() {
-  const [projects, recentDeployments] = await Promise.all([
+  const [allProjects, allDeployments] = await Promise.all([
     getProjects(),
-    getAllDeployments(5),
+    getAllDeployments(10), // Fetch extra items to account for filtering
   ]);
+
+  // Prevent dashboard from displaying itself recursively
+  const selfProjectId = process.env.VERCEL_PROJECT_ID;
+  const selfProjectName = "vercel-dashboard";
+
+  const projects = allProjects.filter(
+    (p) => p.id !== selfProjectId && p.name !== selfProjectName
+  );
+
+  const recentDeployments = allDeployments
+    .filter((d) => d.name !== selfProjectName)
+    .slice(0, 5);
 
   const projectsWithDomains = await Promise.all(
     projects.map(async (project) => {
@@ -51,15 +63,6 @@ export default async function Home() {
       return { ...project, resolvedUrl };
     })
   );
-
-  // Compute portfolio statistics for the compact metrics dashboard
-  const totalProjects = projects.length;
-  const activeDeployments = projects.filter(
-    (p) => p.targets?.production?.readyState === "READY"
-  ).length;
-  const uniqueFrameworks = new Set(
-    projects.map((p) => p.framework).filter(Boolean)
-  ).size;
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12 space-y-12">
