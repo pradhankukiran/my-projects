@@ -1,19 +1,90 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
+  /* Material Design 3 Light Palette */
+  --md-primary: #3b82f6; /* Modern Blue */
+  --md-primary-hover: #2563eb;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #dbeafe; /* bg-blue-50/100 */
+  --md-on-primary-container: #1e40af; /* text-blue-800 */
+  
+  --md-secondary: #475569;
+  --md-secondary-container: #f1f5f9;
+  --md-on-secondary-container: #0f172a;
+  
+  --md-background: #f8fafc; /* Slate 50 */
+  --md-surface: #ffffff;
+  --md-surface-variant: #f1f5f9;
+  --md-on-surface: #0f172a;
+  --md-on-surface-variant: #475569;
+  --md-outline: #e2e8f0; /* Slate 200 */
+  --md-outline-variant: #cbd5e1; /* Slate 300 */
+  
+  --md-success: #10b981;
+  --md-success-container: #ecfdf5;
+  --md-on-success-container: #065f46;
+  
+  --md-warning: #f59e0b;
+  --md-warning-container: #fef3c7;
+  --md-on-warning-container: #92400e;
+  
+  --md-error: #ef4444;
+  --md-error-container: #fee2e2;
+  --md-on-error-container: #991b1b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-primary: var(--md-primary);
+  --color-primary-hover: var(--md-primary-hover);
+  --color-on-primary: var(--md-on-primary);
+  --color-primary-container: var(--md-primary-container);
+  --color-on-primary-container: var(--md-on-primary-container);
+  
+  --color-secondary: var(--md-secondary);
+  --color-secondary-container: var(--md-secondary-container);
+  --color-on-secondary-container: var(--md-on-secondary-container);
+  
+  --color-background: var(--md-background);
+  --color-surface: var(--md-surface);
+  --color-surface-variant: var(--md-surface-variant);
+  --color-on-surface: var(--md-on-surface);
+  --color-on-surface-variant: var(--md-on-surface-variant);
+  --color-outline: var(--md-outline);
+  --color-outline-variant: var(--md-outline-variant);
+  
+  --color-success-container: var(--md-success-container);
+  --color-on-success-container: var(--md-on-success-container);
+  --color-warning-container: var(--md-warning-container);
+  --color-on-warning-container: var(--md-on-warning-container);
+  --color-error-container: var(--md-error-container);
+  --color-on-error-container: var(--md-on-error-container);
+
+  --font-sans: var(--font-geist-sans), Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background-color: var(--md-background);
+  color: var(--md-on-surface);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  letter-spacing: -0.01em;
+}
+
+/* Material Ripple-Like Hover Effects & Elevation Transition */
+.m3-transition {
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.m3-card-interactive {
+  composes: m3-transition;
+  background-color: var(--md-surface);
+  border: 1px solid var(--md-outline);
+  border-radius: 1rem; /* rounded-2xl */
+}
+
+.m3-card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--md-primary);
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.08), 0 8px 10px -6px rgba(59, 130, 246, 0.08);
 }
