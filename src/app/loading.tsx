@@ -5,12 +5,9 @@ export default function Loading() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Left biography skeleton */}
         <div className="lg:col-span-2 space-y-5 w-full">
-          <div className="flex items-center gap-5">
-            <div className="h-16 w-16 rounded-2xl bg-slate-200 animate-pulse shrink-0" />
-            <div className="space-y-2 w-full">
-              <div className="h-7 w-48 bg-slate-200 animate-pulse rounded-md" />
-              <div className="h-4 w-36 bg-slate-200/80 animate-pulse rounded-md" />
-            </div>
+          <div className="space-y-2 w-full">
+            <div className="h-7 w-48 bg-slate-200 animate-pulse rounded-md" />
+            <div className="h-4 w-36 bg-slate-200/80 animate-pulse rounded-md" />
           </div>
           <div className="space-y-2.5">
             <div className="h-4 w-full bg-slate-200/70 animate-pulse rounded" />

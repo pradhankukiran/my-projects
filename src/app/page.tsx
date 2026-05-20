@@ -67,19 +67,13 @@ export default async function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Left 2 Cols: Biography & Brand */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center gap-5">
-            {/* Elegant avatar placeholder */}
-            <div className="h-16 w-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl font-extrabold shadow-md border-2 border-white select-none shrink-0">
-              KP
-            </div>
-            <div>
-              <h1 className="text-3xl font-extrabold tracking-tight text-on-surface sm:text-4xl">
-                Kiran Pradhan
-              </h1>
-              <p className="text-sm font-semibold text-primary">
-                Full Stack Engineer & Creative Developer
-              </p>
-            </div>
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-on-surface sm:text-4xl">
+              Kiran Pradhan
+            </h1>
+            <p className="text-sm font-semibold text-primary mt-1">
+              Senior Full Stack Developer | AI | Machine Learning
+            </p>
           </div>
 
           <p className="text-base text-on-surface-variant leading-relaxed max-w-2xl">
