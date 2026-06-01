@@ -14,6 +14,7 @@ const FRAMEWORK_LABELS: Record<string, string> = {
   vue: "Vue",
   svelte: "Svelte",
   sveltekit: "SvelteKit",
+  "sveltekit-1": "SvelteKit",
   angular: "Angular",
   astro: "Astro",
   hugo: "Hugo",
