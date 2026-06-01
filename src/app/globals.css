@@ -44,7 +44,7 @@ body {
 
 /* Width Container */
 .govuk-width-container {
-  max-width: 1020px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;

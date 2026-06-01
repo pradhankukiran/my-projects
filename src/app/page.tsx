@@ -66,25 +66,12 @@ export default async function Home() {
 
   return (
     <div className="govuk-width-container py-8">
-      {/* GOV.UK Phase Banner */}
-      <div className="govuk-phase-banner">
-        <div className="govuk-phase-banner__content">
-          <strong className="govuk-phase-banner__tag">BETA</strong>
-          <span className="govuk-phase-banner__text text-govuk-secondary-text">
-            This is a private administrative dashboard. Your feedback will help us improve it.
-          </span>
-        </div>
-      </div>
-
       {/* Developer Profile Header Grid */}
       <div className="govuk-grid-row border-b-4 border-govuk-text pb-6 mb-8">
         <div className="govuk-grid-column-two-thirds">
           <h1 className="govuk-heading-xl mb-2">Kiran Kumar Pradhan</h1>
           <p className="govuk-body font-bold text-govuk-blue mb-4">
             Senior Full Stack Developer | AI | Machine Learning
-          </p>
-          <p className="govuk-body text-govuk-secondary-text">
-            Welcome to the Vercel projects administrative portal. This system provides official, live tracking of production deployments, active hostnames, repository synchronizations, and deployment logs retrieved directly from the Vercel API.
           </p>
           <div>
             <a

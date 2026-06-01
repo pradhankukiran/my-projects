@@ -1,15 +1,7 @@
 export default function Loading() {
   return (
     <div className="govuk-width-container py-8">
-      {/* GOV.UK Phase Banner */}
-      <div className="govuk-phase-banner">
-        <div className="govuk-phase-banner__content">
-          <strong className="govuk-phase-banner__tag">BETA</strong>
-          <span className="govuk-phase-banner__text text-govuk-secondary-text">
-            This is a private administrative dashboard. Your feedback will help us improve it.
-          </span>
-        </div>
-      </div>
+
 
       {/* GDS Back Link Skeleton */}
       <div className="h-6 w-36 bg-govuk-border/80 animate-pulse mb-8" />
