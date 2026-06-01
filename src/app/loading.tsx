@@ -1,81 +1,78 @@
 export default function Loading() {
   return (
-    <div className="mx-auto max-w-7xl px-6 py-12 space-y-12">
-      {/* Developer Profile Single Column Skeleton */}
-      <div className="space-y-5 max-w-3xl">
-        <div className="space-y-2 w-full">
-          <div className="h-8 w-64 bg-slate-200 animate-pulse rounded-md" />
-          <div className="h-4.5 w-80 bg-slate-200/80 animate-pulse rounded-md" />
-        </div>
-        <div className="space-y-2.5">
-          <div className="h-4.5 w-full bg-slate-200/70 animate-pulse rounded" />
-          <div className="h-4.5 w-5/6 bg-slate-200/70 animate-pulse rounded" />
-        </div>
-        <div className="flex gap-2">
-          <div className="h-7 w-20 bg-slate-200/50 animate-pulse rounded-full" />
+    <div className="govuk-width-container py-8">
+      {/* GOV.UK Phase Banner */}
+      <div className="govuk-phase-banner">
+        <div className="govuk-phase-banner__content">
+          <strong className="govuk-phase-banner__tag">BETA</strong>
+          <span className="govuk-phase-banner__text text-govuk-secondary-text">
+            This is a private administrative dashboard. Your feedback will help us improve it.
+          </span>
         </div>
       </div>
 
-      {/* Main search and chips skeleton */}
-      <div className="border-t border-slate-200/60 pt-10 space-y-6">
-        <div className="h-11 w-full max-w-lg bg-slate-200 animate-pulse rounded-full" />
-        <div className="flex gap-2">
-          <div className="h-7.5 w-12 bg-slate-200 animate-pulse rounded-full" />
-          <div className="h-7.5 w-20 bg-slate-200 animate-pulse rounded-full" />
-          <div className="h-7.5 w-16 bg-slate-200 animate-pulse rounded-full" />
+      {/* Developer Profile Header Grid Skeleton */}
+      <div className="govuk-grid-row border-b-4 border-govuk-text pb-6 mb-8">
+        <div className="govuk-grid-column-two-thirds space-y-4">
+          <div className="h-9 w-64 bg-govuk-border animate-pulse" />
+          <div className="h-4.5 w-80 bg-govuk-border/80 animate-pulse" />
+          <div className="space-y-2">
+            <div className="h-4 w-full bg-govuk-border/50 animate-pulse" />
+            <div className="h-4 w-5/6 bg-govuk-border/50 animate-pulse" />
+          </div>
+          <div className="h-10 w-44 bg-govuk-border/40 animate-pulse" />
         </div>
+      </div>
 
-        {/* Project grid skeleton */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              className="bg-white border border-outline rounded-2xl p-6 shadow-sm space-y-4"
-            >
-              <div className="flex items-start justify-between">
-                <div className="h-5 w-32 bg-slate-200 animate-pulse rounded" />
-                <div className="h-5 w-14 bg-slate-200/80 animate-pulse rounded-full" />
-              </div>
-              <div className="h-4 w-48 bg-slate-200/60 animate-pulse rounded" />
+      {/* Search Grid Skeleton */}
+      <div className="govuk-grid-row mb-6">
+        <div className="govuk-grid-column-two-thirds space-y-3">
+          <div className="h-6 w-48 bg-govuk-border/80 animate-pulse" />
+          <div className="h-10 w-full max-w-xl bg-govuk-border/50 animate-pulse" />
+        </div>
+        <div className="govuk-grid-column-one-third space-y-3">
+          <div className="h-6 w-40 bg-govuk-border/80 animate-pulse" />
+          <div className="h-10 w-full bg-govuk-border/50 animate-pulse" />
+        </div>
+      </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
-                <div className="h-6 w-20 bg-slate-200 animate-pulse rounded-md" />
-                <div className="h-4 w-24 bg-slate-200/60 animate-pulse rounded" />
-              </div>
+      <div className="mb-6 border-b-2 border-govuk-border pb-2">
+        <div className="h-7 w-56 bg-govuk-border/80 animate-pulse" />
+      </div>
 
-              <div className="pt-3 border-t border-slate-100/50 flex justify-between items-center">
-                <div className="h-3.5 w-20 bg-slate-200/40 animate-pulse rounded" />
-                <div className="h-7.5 w-20 bg-slate-200 animate-pulse rounded-full" />
-              </div>
+      {/* Cards Grid Skeleton */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="govuk-summary-card govuk-summary-card--building">
+            <div className="govuk-summary-card__title-wrapper">
+              <div className="h-5 w-32 bg-govuk-border/60 animate-pulse" />
+              <div className="h-4.5 w-14 bg-govuk-border/50 animate-pulse" />
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Bottom Global Recent Activity Skeleton */}
-      <div className="border-t border-slate-200/60 pt-10 space-y-6">
-        <div className="h-6 w-48 bg-slate-200 animate-pulse rounded" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div
-              key={i}
-              className="bg-white border border-outline rounded-xl p-4 shadow-3xs flex justify-between items-start gap-4"
-            >
-              <div className="space-y-2 w-2/3">
-                <div className="flex gap-2">
-                  <div className="h-4 w-24 bg-slate-200 animate-pulse rounded" />
-                  <div className="h-4 w-10 bg-slate-100 animate-pulse rounded" />
+            <div className="govuk-summary-card__content flex flex-col justify-between h-[180px] space-y-3">
+              <div className="space-y-2">
+                <div className="h-3 w-20 bg-govuk-border/40 animate-pulse" />
+                <div className="h-4 w-40 bg-govuk-border/50 animate-pulse" />
+              </div>
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-govuk-border">
+                <div className="space-y-1">
+                  <div className="h-3 w-12 bg-govuk-border/40 animate-pulse" />
+                  <div className="h-4 w-16 bg-govuk-border/50 animate-pulse" />
                 </div>
-                <div className="h-3 w-40 bg-slate-200/50 animate-pulse rounded" />
-                <div className="h-3 w-28 bg-slate-200/30 animate-pulse rounded" />
+                <div className="space-y-1">
+                  <div className="h-3 w-12 bg-govuk-border/40 animate-pulse" />
+                  <div className="h-4 w-16 bg-govuk-border/50 animate-pulse" />
+                </div>
               </div>
-              <div className="flex flex-col items-end shrink-0 space-y-2">
-                <div className="h-3.5 w-12 bg-slate-200/40 animate-pulse rounded" />
-                <div className="h-3.5 w-16 bg-slate-200 animate-pulse rounded" />
+              <div className="pt-2 border-t border-govuk-border flex justify-between items-center mt-auto">
+                <div className="h-3.5 w-20 bg-govuk-border/30 animate-pulse" />
+                <div className="flex gap-2">
+                  <div className="h-6 w-12 bg-govuk-border/40 animate-pulse" />
+                  <div className="h-6 w-12 bg-govuk-border/40 animate-pulse" />
+                </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

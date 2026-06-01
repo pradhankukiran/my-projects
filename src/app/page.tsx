@@ -4,20 +4,20 @@ import ProjectSearch from "@/components/project-search";
 
 export const dynamic = "force-dynamic";
 
-function statusDotColor(state: string): string {
+function statusGdsTag(state: string): { text: string; className: string } {
   switch (state) {
     case "READY":
-      return "bg-emerald-500";
+      return { text: "Ready", className: "govuk-tag--green" };
     case "ERROR":
-      return "bg-rose-500";
+      return { text: "Error", className: "govuk-tag--red" };
     case "BUILDING":
     case "INITIALIZING":
     case "QUEUED":
-      return "bg-amber-500 animate-ping";
+      return { text: "Building", className: "govuk-tag--yellow" };
     case "CANCELED":
-      return "bg-slate-400";
+      return { text: "Canceled", className: "govuk-tag--grey" };
     default:
-      return "bg-slate-400";
+      return { text: state.toLowerCase(), className: "govuk-tag--grey" };
   }
 }
 
@@ -65,91 +65,106 @@ export default async function Home() {
   );
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-12 space-y-12">
-      {/* Developer Profile Hero Layout (Single Column) */}
-      <div className="space-y-5 max-w-3xl">
-        <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-on-surface sm:text-4xl">
-            Kiran Kumar Pradhan
-          </h1>
-          <p className="text-sm font-semibold text-primary mt-1">
-            Senior Full Stack Developer | AI | Machine Learning
-          </p>
-        </div>
-
-        <p className="text-base text-on-surface-variant leading-relaxed">
-          Welcome to my personal showcase. I construct web architectures, frontends, and integrations. This workspace provides dynamic insights into my production deployments, github synchronizations, and live status logs fetched directly from Vercel API.
-        </p>
-
-        <div className="flex flex-wrap gap-2.5">
-          <a
-            href="https://github.com/pradhankukiran"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-outline bg-white hover:bg-slate-50 text-xs font-semibold text-on-surface m3-transition shadow-2xs"
-          >
-            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-              <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
-            </svg>
-            GitHub
-          </a>
+    <div className="govuk-width-container py-8">
+      {/* GOV.UK Phase Banner */}
+      <div className="govuk-phase-banner">
+        <div className="govuk-phase-banner__content">
+          <strong className="govuk-phase-banner__tag">BETA</strong>
+          <span className="govuk-phase-banner__text text-govuk-secondary-text">
+            This is a private administrative dashboard. Your feedback will help us improve it.
+          </span>
         </div>
       </div>
 
-      {/* Main projects grid with filters & search */}
-      <div className="border-t border-outline/65 pt-10">
+      {/* Developer Profile Header Grid */}
+      <div className="govuk-grid-row border-b-4 border-govuk-text pb-6 mb-8">
+        <div className="govuk-grid-column-two-thirds">
+          <h1 className="govuk-heading-xl mb-2">Kiran Kumar Pradhan</h1>
+          <p className="govuk-body font-bold text-govuk-blue mb-4">
+            Senior Full Stack Developer | AI | Machine Learning
+          </p>
+          <p className="govuk-body text-govuk-secondary-text">
+            Welcome to the Vercel projects administrative portal. This system provides official, live tracking of production deployments, active hostnames, repository synchronizations, and deployment logs retrieved directly from the Vercel API.
+          </p>
+          <div>
+            <a
+              href="https://github.com/pradhankukiran"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="govuk-button govuk-button--secondary"
+            >
+              View GitHub Profile ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main search and projects table/list */}
+      <div className="mb-12">
         <ProjectSearch projects={projectsWithDomains} />
       </div>
 
-      {/* Bottom Global Recent Activity Feed */}
-      <div className="border-t border-outline/65 pt-10 space-y-6">
-        <div className="flex items-center gap-2">
-          <div className="h-1.5 w-5 rounded bg-primary" />
-          <h2 className="text-lg font-extrabold text-on-surface">Recent Deployment Activity</h2>
-        </div>
-
+      {/* Recent Activity Section */}
+      <div className="border-t border-govuk-border pt-8">
+        <h2 className="govuk-heading-l mb-4">Recent Deployment Activity</h2>
         {recentDeployments.length === 0 ? (
-          <p className="text-sm text-on-surface-variant italic">No recent deployment logs found.</p>
+          <p className="govuk-body text-govuk-secondary-text italic">No recent deployment logs found.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {recentDeployments.map((d) => (
-              <Link
-                key={d.uid}
-                href={`/projects/${d.name}`}
-                className="bg-white border border-outline hover:border-slate-300 rounded-xl p-4 shadow-3xs flex justify-between items-start gap-4 m3-transition cursor-pointer"
-              >
-                <div className="space-y-1.5 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-on-surface truncate hover:text-primary">
-                      {d.name}
-                    </span>
-                    <span className="shrink-0 text-3xs font-semibold text-on-surface-variant font-mono bg-slate-100 border border-outline px-1.5 py-0.25 rounded">
-                      {d.target === "production" ? "prod" : "preview"}
-                    </span>
-                  </div>
-                  <p className="text-3xs text-on-surface-variant font-mono truncate max-w-xs break-all">
-                    {d.url}
-                  </p>
-                  {d.meta?.githubCommitMessage && (
-                    <p className="text-3xs text-on-surface-variant/80 italic truncate line-clamp-1 max-w-[250px]">
-                      "{d.meta.githubCommitMessage}"
-                    </p>
-                  )}
-                </div>
-
-                <div className="flex flex-col items-end shrink-0 space-y-2">
-                  <span className="text-3xs text-on-surface-variant/75 font-semibold">
-                    {timeAgo(d.created)}
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <span className={`h-2 w-2 rounded-full ${statusDotColor(d.state)}`} />
-                    <span className="text-3xs font-bold uppercase tracking-wider text-on-surface-variant">
-                      {d.state}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+          <div className="overflow-x-auto">
+            <table className="govuk-table">
+              <thead className="govuk-table__head">
+                <tr className="govuk-table__row">
+                  <th scope="col" className="govuk-table__header">Project</th>
+                  <th scope="col" className="govuk-table__header">Target</th>
+                  <th scope="col" className="govuk-table__header">Host URL</th>
+                  <th scope="col" className="govuk-table__header font-normal">Commit Message</th>
+                  <th scope="col" className="govuk-table__header">Status</th>
+                  <th scope="col" className="govuk-table__header">Time</th>
+                </tr>
+              </thead>
+              <tbody className="govuk-table__body">
+                {recentDeployments.map((d) => {
+                  const { text, className } = statusGdsTag(d.state);
+                  return (
+                    <tr key={d.uid} className="govuk-table__row">
+                      <td className="govuk-table__cell font-bold">
+                        <Link href={`/projects/${d.name}`} className="govuk-footer__link">
+                          {d.name}
+                        </Link>
+                      </td>
+                      <td className="govuk-table__cell">
+                        <span className="font-mono text-xs uppercase px-1 bg-govuk-bg border border-govuk-border">
+                          {d.target === "production" ? "prod" : "preview"}
+                        </span>
+                      </td>
+                      <td className="govuk-table__cell font-mono text-xs">
+                        <a
+                          href={`https://${d.url}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="govuk-footer__link"
+                        >
+                          {d.url}
+                        </a>
+                      </td>
+                      <td className="govuk-table__cell">
+                        {d.meta?.githubCommitMessage ? (
+                          <span className="italic">"{d.meta.githubCommitMessage}"</span>
+                        ) : (
+                          <span className="text-govuk-secondary-text">Manual build trigger</span>
+                        )}
+                      </td>
+                      <td className="govuk-table__cell">
+                        <span className={`govuk-tag ${className}`}>{text}</span>
+                      </td>
+                      <td className="govuk-table__cell text-govuk-secondary-text">
+                        {timeAgo(d.created)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         )}
       </div>
