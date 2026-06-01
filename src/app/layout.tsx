@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vercel Projects Admin",
+  title: "Kiran Kumar Pradhan",
   description: "View all your Vercel projects and deployments",
 };
 
