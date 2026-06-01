@@ -43,7 +43,8 @@ const FRAMEWORK_LABELS: Record<string, string> = {
   "sveltekit-1": "SvelteKit",
   angular: "Angular",
   astro: "Astro",
-  vite: "Vite",
+  vite: "React",
+  create_react_app: "React",
 };
 
 export default async function ProjectPage({
